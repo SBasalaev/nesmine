@@ -1,0 +1,40 @@
+NESMine is a port of the Minesweeper game from the popular operating
+system to the Nintendo Entertainment System (NES, Famicom).
+
+
+Building prerequisites:
+
+To compile the project you will need xa65 or compatible
+compiler. It can be obtained from
+	http://www.floodgap.com/retrotech/xa/
+Users of Debian and its derivatives may want to install it using
+	$ apt-get install xa65
+
+
+Building process:
+
+Building is simple as long as you familiar with the command line.
+To build ROM on the Unix system use command `make'.
+To do the same under DOS or Windows system launch `make.bat'
+
+After that playable ROM can be found in the "dist" subdirectory.
+	
+	
+Using:
+
+To play ROM you will need a NES emulator. Many of them can be found
+on the internet. Just start it with the file "nesmine.nes" from the
+"dist" subdirectory as parameter or use File->Open... from the menu
+after starting emulator.
+	
+	
+Troubleshooting:
+
+If your build failed for reason "Command not found" or "File not found"
+that means your system cannot find the xa65 executable. In this case
+open build file you need (Makefile or make.bat) and replace path to the
+xa65 executable in the first line to the correct one, for example
+  XA=/usr/bin/xa
+in Makefile on Unix-like systems or
+  set XA=C:\Xa65\xa.exe
+in make.bat on DOS-like systems.
