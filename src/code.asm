@@ -301,7 +301,7 @@ gameinit:
 	dex
 	stx TO_OPEN+1       ;TO_OPEN = 0 - FIELD_MINES
 	ldy FIELD_MINES
-gameinit_decbymines
+gameinit_decbymines:
 	dex
 	dey
 	bne gameinit_decbymines
@@ -824,7 +824,7 @@ triggerflag_draw:
 	adc FIELD_XOFS
 	tax
 	lda CURSOR_Y
-	adc #3
+	adc #4
 	tay
 	jsr setvrambyxy
 	pla
