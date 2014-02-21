@@ -202,11 +202,11 @@ start_wait:
 	;TODO game menu
 	
 	;field settings, now only hardcoded
-	lda #10
+	lda #99
 	sta FIELD_MINES
 	lda #16
 	sta FIELD_H
-	lda #16
+	lda #30
 	sta FIELD_W
 	lsr
 	eor #$ff
