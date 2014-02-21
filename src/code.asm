@@ -1,8 +1,8 @@
 ; NESMine game
 ;   Code source file
 ;
-; Author: Serguey G Basalaev
-; Copyright (C) 2009  Serguey G Basalaev <sbasalaev@gmail.com>
+; Author: Sergey Basalaev
+; Copyright (C) 2009, 2014, Sergey Basalaev <sbasalaev@gmail.com>
 ;
 ; Redistribution and use in source and binary forms, with or without
 ; modification, are permitted provided that the following conditions
@@ -27,7 +27,6 @@
 ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ; ***** MACRO DEFINITIONS *****
-
 #define NULL  0
 
 ;loads high byte of address in X and low one in Y
@@ -135,7 +134,6 @@ JOYPAD2     = $4017
 
 cursed:
 	jmp cursed
-	
 reset:
 	;initializing
 	cld
@@ -198,22 +196,24 @@ start_wait:
 	lda BTN_START
 	beq start_wait
 	jsr randomize
-	
+
 ; ***** GAME MENU *****
 	;to choose difficulty and show records
 	;TODO game menu
 	
 	;field settings, now only hardcoded
+	lda #10
+	sta FIELD_MINES
 	lda #16
 	sta FIELD_H
-	lda #30
+	lda #16
 	sta FIELD_W
-	lda #1              ;should be set to (16 - FIELD_W / 2)
+	lsr
+	eor #$ff
+	adc #17             ; set to (16 - FIELD_W / 2)
 	sta FIELD_XOFS      ; to center field on the screen
-	lda #99
-	sta FIELD_MINES
-	
-	
+
+
 ; ***** MINE FIELD *****
 
 field:
